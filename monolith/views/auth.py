@@ -19,7 +19,7 @@ def _strava_auth():
     access_token = xc(client_id=auth.app.config['STRAVA_CLIENT_ID'],
                       client_secret=auth.app.config['STRAVA_CLIENT_SECRET'],
                       code=code)
-    current_user.strava_token = access_token
+    current_user.strava_token = access_token['access_token']
     db.session.add(current_user)
     db.session.commit()
     return redirect('/')
